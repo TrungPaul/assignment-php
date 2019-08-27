@@ -13,7 +13,8 @@
     <th>Address</th>
     <th>Birthday</th>
     <th>Is active</th>
-    
+    <th>Roles</th>
+    <th></th>
     
     <th><a href="{{route('user.add')}}" title=""><button type="button" class="btn btn-success ">Thêm</button></a></td></th>
         </tr>
@@ -26,9 +27,16 @@
         <td>{{$value->email}}</td>
         <td>{{$value->address}}</td>
         <td>{{$value->birthday}}</td>
-        <td>{{$value->is_active}}</td>
-       
-      </td>
+        @if($value->is_active==1)
+       <td>On</td>
+       @else 
+       <td>Off</td>
+       @endif
+      @if($value->roles==1)
+       <td>Admin</td>
+       @else 
+       <td>User</td>
+       @endif
         <td></td>
         <td><a href="{{route('user.remove', $value->id)}}" title=""><button type="button" class="btn btn-danger " data-toggle="modal" data-target="#exampleModalScrollable" onclick="myFunction()">Xoá</button></a>
             <a href="{{route('user.edit', $value->id)}}" title=""><button type="button" class="btn btn-primary ">Sửa</button></a></td>

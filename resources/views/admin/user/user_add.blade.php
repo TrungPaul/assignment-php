@@ -47,7 +47,7 @@
 		<input type="password" 
 				class="form-control" 
 				name="password"
-				value="{{isset($user) ? $user->password : ''}}">
+				>
 		
 
 	</div>
@@ -71,19 +71,49 @@
 	</div>
 	<div class="form-group">
 		<label for="birthday"> is active</label>
-		<input type="number" 
+		<!-- <input type="number" 
 				class="form-control" 
 				name="is_active"
-				value="{{isset($user) ? $user->is_active : ''}}">
+				value="{{isset($user) ? $user->is_active : ''}}"> -->
+		<select name="is_active" id="" class="form-control">
+
+			<option
+			@if((isset($user)) && $user->is_active==1)
+			selected
+			@endif 
+			 value="1"> on </option>
+			 <option
+			@if((isset($user)) && $user->is_active!=1)
+			selected
+			@endif 
+			 value="0"> off </option>
+
+
+		</select>
 		
 
 	</div>
 	<div class="form-group">
-		<label for="birthday"> Role</label>
-		<input type="number" 
+		<label for="roles"> Role</label>
+		<!-- <input type="number" 
 				class="form-control" 
 				name="roles"
-				value="{{isset($user) ? $user->roles : ''}}">
+				value="{{isset($user) ? $user->roles : ''}}"> -->
+				<select name="roles" id="" class="form-control">
+
+			<option
+			@if((isset($user)) && $user->roles==1)
+			selected
+			@endif 
+			 value="1"> Admin </option>
+			 <option
+			@if((isset($user)) && $user->roles!=1)
+			selected
+			@endif 
+			 value="2"> User </option>
+
+
+		</select>
 		
 
 	</div>

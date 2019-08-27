@@ -81,7 +81,7 @@
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="number" class="form-control" placeholder="role" name="roles">
+        <input type="hidden" class="form-control" placeholder="role" name="roles" value="2">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
 

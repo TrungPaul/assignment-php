@@ -55,9 +55,9 @@ Route::group((['prefix' => 'comment' ,'as'=> 'comment.']), function () {
 		Route::get('{comment}/remove','CommentController@remove')->name('remove');
 });
 Route::group((['prefix' => 'admins' ,'as'=> 'admins.']), function () {
-	Route::get('login', 'UserController@getLogin')->name('getLogin');
-	Route::post('postLogin', 'UserController@postLogin' )->name('postLogin');
-	Route::get('logout', 'UserController@logout')->name('getLogout');
-	Route::get('register', 'UserController@getRegister')->name('getRegister');
-	Route::post('postRegister', 'UserController@postRegister' )->name('postRegister');
+	Route::get('login', 'loginController@getLogin')->name('getLogin');
+	Route::post('postLogin', 'loginController@postLogin' )->name('postLogin');
+	Route::get('logout', 'loginController@logout')->name('getLogout');
+	Route::get('register', 'loginController@getRegister')->name('getRegister');
+	Route::post('postRegister', 'loginController@postRegister' )->name('postRegister');
 });

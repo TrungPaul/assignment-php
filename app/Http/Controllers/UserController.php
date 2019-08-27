@@ -44,6 +44,7 @@ class UserController extends Controller
         
         // lưu dữ liệu vào bảng class
         $user = new user();
+
         //gán dữ liệu cho các thuộc tính
         $data['password'] = bcrypt($request->password);
         $user->fistname = $data['fistname'];
@@ -82,16 +83,16 @@ public function update(Request $request)
       $this->validate($request, [
         'fistname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users',
             'password'=> 'required|min:6',
             'address' => 'required',
             'birthday'=>'required',
             'roles'=>'nullable'
             
         ]);
-
+      $user = user::find($request->id);
       $data = $request->except('_token' , 'id');
-      $user = new user();
+      
       $data['password'] = bcrypt($request->password);
         $user->fistname = $data['fistname'];
         $user->lastname = $data['lastname'];

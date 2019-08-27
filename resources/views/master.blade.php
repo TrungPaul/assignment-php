@@ -262,6 +262,7 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{route('category.list')}}"><i class="fa fa-link"></i> <span>category</span></a></li>
         <li><a href="{{route('product.list')}}"><i class="fa fa-link"></i> <span>product</span></a></li>
+         <li><a href="{{route('comment.list')}}"><i class="fa fa-link"></i> <span>comment</span></a></li>
         <li class="treeview">
           <a href="{{route('user.list')}}"><i class="fa fa-link"></i> <span>user</span>
             <span class="pull-right-container">

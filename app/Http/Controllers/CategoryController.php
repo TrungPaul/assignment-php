@@ -14,12 +14,14 @@ class CategoryController extends Controller
       }
     function index() {
     		$category=category::all();
-        
+        $category= $category->load('childs');
     		return view ('admin.category.category' , [ 'category' => $category]);
     }
 
 public function createform(){
-   	return view('admin.category.cate_add');
+    $category=category::all();
+   $category= $category->load('childs');
+   	return view('admin.category.cate_add' , [ 'category' => $category]);
    }
    public function create(CategoryRequest $request)
             {
@@ -34,8 +36,9 @@ public function createform(){
       return $this->index();
    }
    public function editform(category $category){
-     // dDAT TEN THAM SOS TRUFNG S THAM SỐ Ở ROUTE KÈM THEO CLASSROOM THÌ TRẢ VỀ LUÔN CLASSROOM CÓ ID MÀ K CẦN FIND
-       return view('admin.category.cate_add', ['cate' => $category]);
+     // dDAT TEN THAM SOS TRUFNG S THAM SỐ Ở ROUTE KÈM THEO CLASSROOM THÌ TRẢ VỀ LUÔN CLASSROOM CÓ ID MÀ K CẦN FIND 
+      $category= $category->load('childs');
+       return view('admin.category.cate_edit', ['cate' => $category]);
    }
    public function update(CategoryRequest $request)
      {

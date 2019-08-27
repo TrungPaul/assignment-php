@@ -19,7 +19,7 @@ class checkUser
         
         // kiểm tra xem user có active hay k 
         if($user->roles !=1) {
-            return abort(403, 'Không có quyền!');
+            return abort(403, 'Không có quyền admin!');
         }     
         return $next($request);
     }

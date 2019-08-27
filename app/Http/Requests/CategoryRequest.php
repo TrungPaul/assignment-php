@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:2',
+            'name' => 'required|string|min:2|unique:categories',
            
             'parent_id' => 'nullable|numeric',
         ];
@@ -32,6 +32,7 @@ class CategoryRequest extends FormRequest
     public function messages(){
         return [
                 'name.required' => 'Yêu cầu nhập tên',
+                'name.unique' => 'Yêu cầu nhập tên k được trùng',
                 'name.string' => 'Yêu cầu là chuối',
                 'name.min' => 'Tên danh mục ít nhất 2 kí tự'
         ];

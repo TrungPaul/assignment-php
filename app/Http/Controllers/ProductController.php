@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\category;
+
 use App\Models\comment;
 use App\Http\Requests\ProductRequest;
 
@@ -14,6 +16,9 @@ class ProductController extends Controller
       }
      function index() {
     		$product=product::all();
+        $product = $product->load('categories')->toArray();
+
+        
     		return view ('admin.product.product' , [ 'product' => $product]);
 
     }
@@ -24,7 +29,7 @@ class ProductController extends Controller
     }
       function detail(product $product) {
         $product = $product->load('comments');
-         dd($product);
+        dd($product);
         return view ('productDetail' , [ 'product' => $product]);
 
     }
@@ -34,7 +39,9 @@ class ProductController extends Controller
       return $this->index();
    }
    public function createform(){
-   	return view('admin.product.product_add');
+    $category=category::all();
+    
+   	return view('admin.product.product_add', [ 'category' => $category]);
    }
     public function create(ProductRequest $request)
             {
@@ -44,8 +51,8 @@ class ProductController extends Controller
    			return $this->index();
 }
 public function editform(product $product){
-    
-       return view('admin.product.product_add', ['product' => $product]);
+   $category=category::all();
+       return view('admin.product.product_edit', ['product' => $product , 'category' => $category]);
    }
 public function update(ProductRequest $request)
      {

@@ -26,14 +26,17 @@
 	</div>
 	<div class="form-group">
 		<label for="maxstudent"> Parent_id</label>
-		<!-- <input type="number" name="parent_id" class="form-control"
-		value="{{isset($cate) ? $cate->parent_id : ''}}">  -->
-		<select name="parent_id" id="" class="form-control">
-			@foreach($category as $cat)
-			<option value="{{isset($product) ? $cate->cate_id : $cat->cate_id}}">{{isset($cate) ? $cate->name : $cat->name}}</option>
+		<input type="number" name="parent_id" class="form-control"
+		value="{{isset($cate) ? $cate->parent_id : ''}}"> 
+		<!-- <select name="parent_id" id="" class="form-control">
+			@foreach($cate as $cat)
+			<option 
+			@if($cat->id == $cat->childs['id'])
+			selected
+			@endif
+			value="{{$cat->id}}">{{$cat->childs['name']}}</option>	
 			@endforeach
-
-		</select>
+		</select> -->
 	</div>
 	<div class="form-group">
 		<button type="submit" class="btn btn submit"> Save</button>

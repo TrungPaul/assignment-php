@@ -20,7 +20,7 @@
 		<input type="text" 
 				class="form-control" 
 				name="name"
-				value="{{isset($product) ? $product->name : ''}}">
+				value="{{$product->name}}">
 		
 
 	</div>
@@ -38,7 +38,7 @@
 		<input type="text" 
 				class="form-control" 
 				name="price"
-				value="{{isset($product) ? $product->price : ''}}">
+				value="{{$product->price}}">
 		
 
 	</div>
@@ -47,7 +47,7 @@
 		<input type="number" 
 				class="form-control" 
 				name="sale_percent"
-				value="{{isset($product) ? $product->sale_percent : ''}}">
+				value="{{$product->sale_percent}}">
 		
 
 	</div>
@@ -56,7 +56,7 @@
 		<input type="text" 
 				class="form-control" 
 				name="stocks"
-				value="{{isset($product) ? $product->stocks : ''}}">
+				value="{{$product->stocks}}">
 		
 
 	</div>
@@ -65,7 +65,7 @@
 		<input type="text" 
 				class="form-control" 
 				name="is_active"
-				value="{{isset($product) ? $product->is_active : ''}}">
+				value="{{$product->is_active}}">
 	
 
 	</div>
@@ -77,7 +77,11 @@
 				value="{{isset($product) ? $product->cate_id : ''}}"> -->
 		<select name="cate_id" id="" class="form-control" >
 			@foreach($category as $cate)
-			<option value="{{isset($product) ? $product->cate_id : $cate->cate_id}}">{{isset($product) ? $product->name : $cate->name}}</option>
+			<option 
+			@if($product->cate_id == $cate->id)
+			selected
+			@endif
+			value="{{$product->id}}">{{$cate->name}}</option>	
 			@endforeach
 		</select>
 
